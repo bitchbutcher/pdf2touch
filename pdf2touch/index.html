@@ -30,6 +30,8 @@
 <title>Hello World</title>
 <script type="text/javascript" src="cordova.js"></script> 
 <script type="text/javascript" charset="utf-8">
+
+var fileToLoad = "http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf";
         // Wait for Cordova to load
   document.addEventListener("deviceready", onDeviceReady, false);
   // Cordova is ready
@@ -50,7 +52,7 @@
                                                          var fileTransfer = new FileTransfer();
                                                          fileEntry.remove();
                                                          fileTransfer.download(
-                                                                               "http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf",
+                                                                               fileToLoad,
                                                                                sPath + "theFile.pdf",
                                                                                function(theFile) {
                                                                                alert("download complete: " + theFile.toURI());
@@ -86,6 +88,7 @@
 <div class="app">
   <h1>PhoneGap</h1>
   <div id="deviceready" class="blink">
+  	<a href="http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf">http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf</a>
 
   </div>
 </div>

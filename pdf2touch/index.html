@@ -35,6 +35,7 @@
 	$(document).ready(function() {
 	//window.setTimeout("firstBloodVideo()", 1000);
 	  document.addEventListener("deviceready", onDeviceReady, false);
+	$("#deviceready").add("<div>LOGO</div>");
 });
 
   // Cordova is ready
@@ -42,7 +43,6 @@
      // alert("Going to start download");
 	 alert (cordova.file.dataDirectory);
 	// storeIntelligrapeLogo ();
-	$("#deviceready").add("<div>LOGO</div>");
 	download("http://www.kannuronlineservices.com/images/logo.png",cordova.file.dataDirectory+"test.png");
   }
   

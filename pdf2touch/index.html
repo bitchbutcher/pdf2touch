@@ -54,8 +54,8 @@
 			uri,
 			storeURL,
 			function(entry) {
-				alert("download complete: " + entry.toURL());
-				$("#deviceready").add(entry.toURL()+": <img src='"+entry.toURL()+"' />");
+			//	alert("download complete: " + entry.toURL());
+				$("#deviceready").add("<div>download complete: " + entry.toURL()+"<img src='"+entry.toURL()+"' /></div>");
 				
 			},
 			function(error) {

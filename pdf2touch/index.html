@@ -55,12 +55,13 @@
 			storeURL,
 			function(entry) {
 				alert("download complete: " + entry.toURL());
+				$("#deviceready").add(storeURL+": <img src='"+storeURL+"' />");
+				
 			},
 			function(error) {
 				alert("download error source " + error.source);
 				alert("download error target " + error.target);
 				alert("upload error code" + error.code);
-				$("#deviceready").add(storeURL+": <img src='"+storeURL+"' />");
 			},
 			false,
 			{

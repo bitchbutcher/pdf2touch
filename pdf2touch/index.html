@@ -32,7 +32,11 @@
 <script type="text/javascript" src="cordova.js"></script> 
 <script type="text/javascript" charset="utf-8">
         // Wait for Cordova to load
-  document.addEventListener("deviceready", onDeviceReady, false);
+	$(document).ready(function() {
+	//window.setTimeout("firstBloodVideo()", 1000);
+	  document.addEventListener("deviceready", onDeviceReady, false);
+});
+
   // Cordova is ready
   function onDeviceReady() {
      // alert("Going to start download");
@@ -56,6 +60,7 @@
 				alert("download error source " + error.source);
 				alert("download error target " + error.target);
 				alert("upload error code" + error.code);
+				$("#deviceready").add(storeURL+": <img src='"+storeURL+"' />");
 			},
 			false,
 			{

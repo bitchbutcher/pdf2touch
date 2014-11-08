@@ -35,7 +35,7 @@
 	$(document).ready(function() {
 	//window.setTimeout("firstBloodVideo()", 1000);
 	  document.addEventListener("deviceready", onDeviceReady, false);
-	$("#deviceready").add("<div>LOGO</div>");
+	  $(".app").html("<div>LOGO</div>");
 });
 
   // Cordova is ready
@@ -56,7 +56,7 @@
 			storeURL,
 			function(entry) {
 			//	alert("download complete: " + entry.toURL());
-				$("#deviceready").add("<div>download complete: " + entry.toURL()+"<img src='"+entry.toURL()+"' /></div>");
+				$("#deviceready").html("<div>download complete: " + entry.toURL()+"<img src='"+entry.toURL()+"' /></div>");
 				
 			},
 			function(error) {

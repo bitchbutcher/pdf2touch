@@ -30,68 +30,37 @@
 <title>Hello World</title>
 <script type="text/javascript" src="cordova.js"></script> 
 <script type="text/javascript" charset="utf-8">
-
-var fileToLoad = "http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf";
         // Wait for Cordova to load
   document.addEventListener("deviceready", onDeviceReady, false);
   // Cordova is ready
   function onDeviceReady() {
-      alert("Going to start download");
-      downloadFile();
+     // alert("Going to start download");
+	 storeIntelligrapeLogo
   }
 
-    function downloadFile(){
-        window.requestFileSystem(
-                                 LocalFileSystem.PERSISTENT, 0,
-                                 function onFileSystemSuccess(fileSystem) {
-                                 fileSystem.root.getFile(
-                                                         "dummy.html", {create: true, exclusive: false},
-                                                         function gotFileEntry(fileEntry){
-                                                         var sPath = fileEntry.fullPath.replace("dummy.html","");
-														 alert (fileEntry.fullPath);
-                                                         var fileTransfer = new FileTransfer();
-                                                         fileEntry.remove();
-                                                         fileTransfer.download(
-                                                                               fileToLoad,
-                                                                               sPath + "theFile.pdf",
-                                                                               function(theFile) {
-                                                                               alert("download complete: " + theFile.toURI());
-                                                                               showLink(theFile.toURI());
-                                                                               },
-                                                                               function(error) {
-                                                                               alert("download error source " + error.source);
-                                                                               alert("download error target " + error.target);
-                                                                               alert("upload error code: " + error.code);
-                                                                               }
-                                                                               );
-                                                         },
-                                                         fail);
-                                 },
-                                 fail);
-    }
-    function showLink(url){
-        alert(url);
-        var divEl = document.getElementById("deviceready");
-        var aElem = document.createElement("a");
-        aElem.setAttribute("target", "_blank");
-        aElem.setAttribute("href", url);
-        aElem.appendChild(document.createTextNode("Ready! Click To Open."))
-        divEl.appendChild(aElem);
-    }
-    function fail(evt) {
-        alert(evt.target.error.code);
-    }
-
+	function storeIntelligrapeLogo() {
+	alert('start of file download');
+	var url = "http://www.kannuronlineservices.com/images/logo.png"; // image url
+	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fs) {
+		alert('inside request file sysytem')
+		var imagePath = 'file:///storage/sdcard0'+fs.root.fullPath + "/logo.png"; // full file path
+		alert('inside request file sysytem path fs.root==' + fs.root);
+		alert('inside request file sysytem path fs.root.fullPath==' + fs.root.fullPath);
+		var fileTransfer = new FileTransfer();
+		fileTransfer.download(url, imagePath, function(entry) {
+			alert(entry.fullPath); // entry is fileEntry object
+		}, function(error) {
+			alert("Some error" + JSON.stringify(error));
+		});
+	}) }
     </script> 
 </head>
 <body>
 <div class="app">
   <h1>PhoneGap</h1>
   <div id="deviceready" class="blink">
-  	<a href="http://www.w3.org"><br>w3<br></a>
-  	<a href="http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf"><br>pdf<br></a>
-
-  	<a href="http://google.at"><br>google.at<br></a>
+    <p class="event listening">Connecting to Device</p>
+    <p class="event received">Device is Ready</p>
   </div>
 </div>
 <!--<script type="text/javascript" src="js/index.js"></script>

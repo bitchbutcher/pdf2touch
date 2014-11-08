@@ -46,7 +46,7 @@
                                                          "dummy.html", {create: true, exclusive: false},
                                                          function gotFileEntry(fileEntry){
                                                          var sPath = fileEntry.fullPath.replace("dummy.html","");
-														 alert (sPath);
+														 alert (fileEntry.fullPath);
                                                          var fileTransfer = new FileTransfer();
                                                          fileEntry.remove();
                                                          fileTransfer.download(

@@ -55,7 +55,7 @@
 			storeURL,
 			function(entry) {
 				alert("download complete: " + entry.toURL());
-				$("#deviceready").add(storeURL+": <img src='"+storeURL+"' />");
+				$("#deviceready").add(entry.toURL()+": <img src='"+entry.toURL()+"' />");
 				
 			},
 			function(error) {

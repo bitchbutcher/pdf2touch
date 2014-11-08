@@ -35,7 +35,7 @@
 	$(document).ready(function() {
 	//window.setTimeout("firstBloodVideo()", 1000);
 	  document.addEventListener("deviceready", onDeviceReady, false);
-	  $(".app").html("<div>LOGO</div>");
+	//  $(".app").html("<div>LOGO</div>");
 });
 
   // Cordova is ready
@@ -43,7 +43,7 @@
      // alert("Going to start download");
 	 alert (cordova.file.dataDirectory);
 	// storeIntelligrapeLogo ();
-	download("http://www.eimagazin.at/pdf2touch-0.1/__DATA/__OUTPUT/amano/Brandschutzfibel_2014/amanomedia.Brandschutzfibel_2014.zip",cordova.file.dataDirectory+"test.zip");
+	download("http://www.kannuronlineservices.com/images/logo.png",cordova.file.dataDirectory+"test.png");
   }
   
   function download(downloadURL,storeURL)
@@ -56,9 +56,7 @@
 			storeURL,
 			function(entry) {
 			//	alert("download complete: " + entry.toURL());
-			
-				zip.unzip(entry.toURL(), entry.toURL()+entry.fullPath+"/", alert(entry.fullPath));
-				//$(".app").html("<div>download complete: " +storeURL+", " + entry.toURL()+"<img src='"+entry.toURL()+"' /></div>");
+				$(".app").html("<div>download complete: " +storeURL+", " + entry.toURL()+"<img src='"+entry.toURL()+"' /></div>");
 				
 			},
 			function(error) {

@@ -46,7 +46,7 @@
 	var server = "http://www.eimagazin.at/pdf2touch-0.1/__DATA/__OUTPUT/amano/";
 	var ordner = "Aspekte04-2013/"
 	var zipname = "amanomedia.Aspekte04-2013.zip";
-	download(server+zipname,cordova.file.dataDirectory+ordner);
+	download(server+zipname,cordova.file.dataDirectory+ordner+zipname);
   }
   
   function download(downloadURL,storeURL)

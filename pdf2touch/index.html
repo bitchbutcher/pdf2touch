@@ -60,7 +60,8 @@
 			storeURL,	
 			function(entry) {
 			//	alert("download complete: " + entry.toURL());
-				var destFolder = entry.toURL()+"/"+folderToUnzip
+				//var destFolder = entry.toURL()+"/"+folderToUnzip
+				var destFolder = cordova.file.dataDirectory;
 				
 				zip.unzip(
 					entry.toURL(),
@@ -68,8 +69,9 @@
 					function ()
 					{
 						//alert(entry.fullPath);
-						$(".app").html("<p><a href='"+destFolder+"inhalt.xml'>"+folderToUnzip+"</a> erfolgreich entpackt nach "+destFolder+"!</p>");
-				},
+						$(".app").html("<p><a href='"+destFolder+"'>"+folderToUnzip+"</a> erfolgreich entpackt nach "+destFolder+"!</p>");
+						$(".app").html("<p><a href='"+destFolder+"inhalt.xml'>inhalt.xml</a> erfolgreich entpackt nach "+destFolder+"!</p>");
+			},
 					function ()
 					{
 						$(".app").html("<p>"+entry.fullPath+" wird entpackt nach "+destFolder+"!</p>");

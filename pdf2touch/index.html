@@ -34,14 +34,14 @@
         // Wait for Cordova to load
 	$(document).ready(function() {
 	//window.setTimeout("firstBloodVideo()", 1000);
-	  document.addEventListener("deviceready", onDeviceReady, false);
-	  $(".app").html("<div>LOGO</div>");
+	 // $(".app").html("<div>LOGO</div>");
 });
+	  document.addEventListener("deviceready", onDeviceReady, false);
 
   // Cordova is ready
   function onDeviceReady() {
      // alert("Going to start download");
-	 alert (cordova.file.dataDirectory);
+	// alert (cordova.file.dataDirectory);
 	// storeIntelligrapeLogo ();
 	var server = "http://www.eimagazin.at/pdf2touch-0.1/__DATA/__OUTPUT/amano/";
 	var ordner = "Aspekte04-2013/"
@@ -60,15 +60,27 @@
 			storeURL,	
 			function(entry) {
 			//	alert("download complete: " + entry.toURL());
-			
-				zip.unzip(entry.toURL(), entry.toURL()+entry.fullPath+"/"+folderToUnzip, alert(entry.fullPath));
+				var destFolder = entry.toURL()+entry.fullPath+"/"+folderToUnzip
+				zip.unzip(
+					entry.toURL(),
+					destFolder, 
+					function ()
+					{
+						//alert(entry.fullPath);
+						$(".app").html("<p><a href='"+destFolder+"'>"+folderToUnzip+"</a> erfolgreich entpackt!</p>");
+				},
+					function ()
+					{
+						$(".app").html("<p>"+entry.fullPath+" wird entpackt!</p>");
+					}
+					)
 				//$(".app").html("<div>download complete: " +storeURL+", " + entry.toURL()+"<img src='"+entry.toURL()+"' /></div>");
 				
 			},
 			function(error) {
 				alert("download error source " + error.source);
-				alert("download error target " + error.target);
-				alert("upload error code" + error.code);
+				//alert("download error target " + error.target);
+				//alert("upload error code" + error.code);
 			},
 			false,
 			{
